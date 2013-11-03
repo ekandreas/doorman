@@ -1,12 +1,18 @@
 var http = require('http');
 var express = require('express');
 var connect = require('connect');
-var conf = require('./conf');
+var log = require('./lib/winston');
+
+if( !process.argv[2] ) {
+	log.error("Configuration name is missing!");
+	return false;
+}
+
+var conf = require('./'+process.argv[2]);
 var everyauth = require('everyauth');
 var Proxy = require('./lib/proxy');
 var github = require('./lib/modules/github');
 var google = require('./lib/modules/google');
-var log = require('./lib/winston');
 
 var proxy = new Proxy(conf.proxyTo.host, conf.proxyTo.port);
 var proxyMiddleware = proxy.middleware();
