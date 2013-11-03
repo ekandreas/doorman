@@ -9,16 +9,18 @@ if( !process.argv[2] ) {
 }
 
 var conf = require('./'+process.argv[2]);
+
 var everyauth = require('everyauth');
 var Proxy = require('./lib/proxy');
-var github = require('./lib/modules/github');
+//var github = require('./lib/modules/github');
 var google = require('./lib/modules/google');
 
 var proxy = new Proxy(conf.proxyTo.host, conf.proxyTo.port);
 var proxyMiddleware = proxy.middleware();
 
+
 // Set up our auth strategies
-github.setup(everyauth);
+//github.setup(everyauth);
 google.setup(everyauth);
 
 function userCanAccess(req) {
