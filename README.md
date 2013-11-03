@@ -20,7 +20,9 @@ Installation
 ------------
 
   * `npm install`
-  * copy conf.example.js to conf.js and modify
+  * copy conf.example.js to your config name, eg jenkins
+  * configurate your config-file with keys
+  * copy and edit doorman_example.config to your /etc/init for autostart
 
 
 Strategies
